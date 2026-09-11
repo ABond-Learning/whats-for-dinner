@@ -228,8 +228,7 @@ export const DINNERS = [
     protein: "Chicken",
     totalMins: 30,
     effort: "Low",
-    confirmed: false,
-    untestedNote: "Not cooked yet. It's the prawn broth's method with diced thigh in place of prawns and a longer simmer, so the shape is proven — but the paste quantity and the 12-minute simmer are estimates. Taste before the lemon goes in.",
+    confirmed: true,
     needsAhead: { label: "Thaw the thighs — about an hour in cold water, or overnight in the fridge", mins: 60 },
     servingsBase: 1,
     ingredients: [

@@ -277,8 +277,6 @@ Boneless thighs in coconut and red curry paste. Thirty minutes, one pan.
 
 *30 minutes · Low effort · one portion*
 
-> **Not cooked yet.** Not cooked yet. It's the prawn broth's method with diced thigh in place of prawns and a longer simmer, so the shape is proven — but the paste quantity and the 12-minute simmer are estimates. Taste before the lemon goes in.
-
 ### Ingredients
 
 - 2 boneless, skinless chicken thighs
