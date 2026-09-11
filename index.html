@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EFF1F4">
+<meta name="description" content="Personal recipe book">
+<title>What's for dinner</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231B4FD1'/%3E%3C/svg%3E">
+<style>
+  html, body { margin: 0; padding: 0; background: #EFF1F4; }
+  #boot { font: 15px/1.6 system-ui, sans-serif; color: #666E7A; padding: 48px 22px; text-align: center; }
+</style>
+</head>
+<body>
+<div id="root"><div id="boot">Loading…</div></div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="./dist/app.js"></script>
+
+<script>
+  // If React or the bundle failed to load, say so rather than sitting on "Loading…".
+  setTimeout(function () {
+    var b = document.getElementById('boot');
+    if (!b) return;
+    b.textContent = !window.React
+      ? 'React failed to load. Check the connection, then reload.'
+      : 'The app failed to start. Open the browser console for the error.';
+  }, 4000);
+</script>
+</body>
+</html>

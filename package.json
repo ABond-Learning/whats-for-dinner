@@ -1,0 +1,12 @@
+{
+  "name": "whats-for-dinner",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node tools/audit.mjs",
+    "build": "node tools/audit.mjs && node tools/generate-markdown.mjs && node tools/build-artifact.mjs && node tools/build-web.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
