@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { DINNERS, COMPONENTS, KITCHEN, STORAGE, WONT_WORK } from "../data/recipes.js";
+import { DINNERS, COMPONENTS, KITCHEN, STORAGE, WONT_WORK, HOWTO } from "../data/recipes.js";
 import { PANTRY, pantryItem, checkRecipe, stateOf, OPTIONAL, SIDES, INGREDIENT_MAP } from "../data/pantry.js";
 
 
@@ -586,6 +586,7 @@ export default function RecipeBook() {
               <button data-on={section === "components" ? 1 : 0} onClick={() => go("components")}>Components</button>
               <button data-on={section === "pantry" ? 1 : 0} onClick={() => go("pantry")}>Pantry</button>
               <button data-on={section === "kitchen" ? 1 : 0} onClick={() => go("kitchen")}>Kitchen</button>
+              <button data-on={section === "howto" ? 1 : 0} onClick={() => go("howto")}>How to</button>
             </div>
 
             {section === "dinners" && (
@@ -618,6 +619,15 @@ export default function RecipeBook() {
                 <div className="panel">
                   <h5>Things that didn't work</h5>
                   <ul>{WONT_WORK.map((w, i) => <li key={i}>{w}</li>)}</ul>
+                </div>
+              </>
+            )}
+
+            {section === "howto" && (
+              <>
+                <p className="blurb">Short answers to the things that come up again and again.</p>
+                <div className="panel">
+                  <dl>{HOWTO.map(([k, v], i) => <React.Fragment key={i}><dt>{k}</dt><dd>{v}</dd></React.Fragment>)}</dl>
                 </div>
               </>
             )}

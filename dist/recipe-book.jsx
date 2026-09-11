@@ -497,6 +497,14 @@ const STORAGE = [
   ["Raw chicken and fish", "Freezer on the day you buy it unless you're cooking within 48 hours. Check fish packs — much supermarket fish has been frozen and thawed already and can't be refrozen."],
 ];
 
+const HOWTO = [
+  ["Cooking tonight", "Open Dinners, tap Can cook now to see what's actually doable, and pick anything marked Ready to cook. Missing N means N core ingredients are short — sides don't count."],
+  ["Updating the pantry after shopping", "Open Pantry, tap In or Out next to whatever changed. After a big shop, use \"Just shopped — mark all in\" under Fresh rather than ticking each one."],
+  ["Marking a recipe as tested", "Cook it and eat it first. Only then tell Claude — it flips confirmed to true and removes the untested note. Looking fine on paper isn't enough."],
+  ["Correcting a quantity", "Tell Claude what's wrong and what it should be instead. It edits data/recipes.js and rebuilds the site — you never need to touch the file yourself."],
+  ["When the site looks out of date", "Hard refresh the page first — it's usually just the browser holding an old copy. Still stale after that means the last change probably wasn't rebuilt and pushed; ask Claude to check."],
+];
+
 const WONT_WORK = [
   "Honey or miso glaze on from the start — black before the chicken is done",
   "Frozen peppers in the roasting tin — they water the pan and steam the skin",
@@ -1235,6 +1243,7 @@ export default function RecipeBook() {
               <button data-on={section === "components" ? 1 : 0} onClick={() => go("components")}>Components</button>
               <button data-on={section === "pantry" ? 1 : 0} onClick={() => go("pantry")}>Pantry</button>
               <button data-on={section === "kitchen" ? 1 : 0} onClick={() => go("kitchen")}>Kitchen</button>
+              <button data-on={section === "howto" ? 1 : 0} onClick={() => go("howto")}>How to</button>
             </div>
 
             {section === "dinners" && (
@@ -1267,6 +1276,15 @@ export default function RecipeBook() {
                 <div className="panel">
                   <h5>Things that didn't work</h5>
                   <ul>{WONT_WORK.map((w, i) => <li key={i}>{w}</li>)}</ul>
+                </div>
+              </>
+            )}
+
+            {section === "howto" && (
+              <>
+                <p className="blurb">Short answers to the things that come up again and again.</p>
+                <div className="panel">
+                  <dl>{HOWTO.map(([k, v], i) => <React.Fragment key={i}><dt>{k}</dt><dd>{v}</dd></React.Fragment>)}</dl>
                 </div>
               </>
             )}
