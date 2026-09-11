@@ -1094,9 +1094,13 @@ function Detail({ recipe, onBack, servings, setServings, pantry }) {
 
 function statusOf(recipe, pantry) {
   const { missing } = checkRecipe(recipe, pantry);
-  if (missing.length === 0) return { s: "ready", label: "Ready to cook" };
-  if (missing.length <= 2) return { s: "near", label: `Missing ${missing.length}` };
-  return { s: "no", label: `Missing ${missing.length}` };
+  if (missing.length === 0) {
+    if (recipe.needsAhead) return { s: "ready", label: "Ready once thawed" };
+    return { s: "ready", label: "Ready to cook" };
+  }
+  const s = missing.length <= 2 ? "near" : "no";
+  if (recipe.needsAhead) return { s, label: `Missing ${missing.length} · thaw first` };
+  return { s, label: `Missing ${missing.length}` };
 }
 
 function PantryPage({ pantry, setPantry }) {
@@ -1178,7 +1182,6 @@ function List({ items, filterable, onOpen, method, pantry }) {
               <span className="status" data-s={statusOf(r, pantry).s}>{statusOf(r, pantry).label}</span>
               <span className="tag">{r.effort} effort</span>
               {r.fromFrozen && <span className="tag">Cooks from frozen</span>}
-              {r.needsAhead && <span className="tag" data-x="1">Thaw first</span>}
               {r.doubleHint && <span className="tag">Worth doubling</span>}
               {!r.confirmed && <span className="tag" data-x="1">Untested</span>}
             </div>
