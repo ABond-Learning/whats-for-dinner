@@ -3,35 +3,29 @@
 This is a personal recipe site for one person, served by GitHub Pages from the
 `main` branch. There is no CI. Whatever is committed is what goes live.
 
-## Branching
+## Standing workflow
 
-This repo has no CI and GitHub Pages serves directly from `main`, so commit
-and push to `main` directly unless explicitly asked for a branch or pull
-request. A change that sits on a branch is a change that hasn't happened.
+These rules apply on every visit to this repo, on every request — including
+one that's a single short sentence with no other instructions attached. They
+are not conditional on being asked for; follow them by default:
 
-## Before you change anything
-
-```bash
-npm install
-```
-
-The sandbox starts empty. `esbuild` is a devDependency and the build will fail
-without this step. Do it once per session, before anything else.
-
-## After you change anything
-
-```bash
-npm run build
-```
-
-This runs the audit, then regenerates `recipes.md`, `dist/recipe-book.jsx` and
-`dist/app.js`. **The audit exits non-zero on failure and stops the chain.** If it
-fails, fix the reported problem — do not skip the build or commit around it.
-
-Then commit **all** changed files, including the ones in `dist/`. GitHub Pages
-serves files as-is with no build step, so an un-rebuilt `dist/app.js` means the
-site silently keeps showing the old content. This is the single most likely way
-to break this repo.
+1. Always run `npm install` then `npm run build` before committing anything.
+   The sandbox starts empty each session; `esbuild` is a devDependency and
+   the build fails without installing first.
+2. `npm run build` runs the audit first, then regenerates `recipes.md`,
+   `dist/recipe-book.jsx` and `dist/app.js`. The audit exits non-zero on
+   failure and stops the chain. Never skip the build and never commit around
+   a failing audit — find the reported cause and fix it.
+3. Always commit **everything** the build changed, including the files in
+   `dist/`. GitHub Pages serves `dist/app.js` as-is with no build step of its
+   own, so an un-rebuilt `dist/app.js` means the site silently keeps showing
+   old content. This is the single most likely way to break this repo.
+4. Always push directly to `main`. Never leave work sitting on a branch —
+   there is no CI here, so a change that sits on a branch is a change that
+   hasn't happened. Only use a branch or open a pull request if explicitly
+   asked to.
+5. Always finish by running `git log --oneline -1` and reporting the
+   resulting commit.
 
 ## What to edit
 
