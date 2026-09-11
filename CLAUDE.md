@@ -5,9 +5,12 @@ This is a personal recipe site for one person, served by GitHub Pages from the
 
 ## Standing workflow
 
-These rules apply on every visit to this repo, on every request — including
-one that's a single short sentence with no other instructions attached. They
-are not conditional on being asked for; follow them by default:
+These rules apply to any request that changes a file — including one that's
+a single short sentence with no other instructions attached. They are not
+conditional on being asked for; follow them by default:
+
+If the request is a question or is exploratory and nothing needs changing,
+answer it and stop. Don't install, build, commit or push.
 
 1. Always run `npm install` then `npm run build` before committing anything.
    The sandbox starts empty each session; `esbuild` is a devDependency and
