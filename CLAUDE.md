@@ -3,6 +3,12 @@
 This is a personal recipe site for one person, served by GitHub Pages from the
 `main` branch. There is no CI. Whatever is committed is what goes live.
 
+## Branching
+
+This repo has no CI and GitHub Pages serves directly from `main`, so commit
+and push to `main` directly unless explicitly asked for a branch or pull
+request. A change that sits on a branch is a change that hasn't happened.
+
 ## Before you change anything
 
 ```bash
