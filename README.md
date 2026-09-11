@@ -15,10 +15,15 @@ src/web-entry.jsx        Mounts the app in the browser.
 tools/audit.mjs          Structural checks. Run before every commit.
 tools/generate-markdown.mjs   Rebuilds recipes.md from the data.
 tools/build-artifact.mjs      Rebuilds the single-file Claude artifact.
+tools/build-web.mjs      Bundles dist/app.js and stamps sw.js from sw-template.js.
+tools/sw-template.js     Service worker source. Edit this, not sw.js.
 dist/recipe-book.jsx     Generated. Paste into Claude to render as an artifact.
 dist/app.js              Generated. The built site bundle. Committed on purpose.
 recipes.md               Generated. Plain-text copy. Never hand-edit.
 index.html               GitHub Pages entry point.
+manifest.json            Web app manifest — name, icon, standalone display.
+icon.svg                 App icon, referenced by manifest.json and index.html.
+sw.js                    Generated. Service worker. Never hand-edit — see tools/sw-template.js.
 ```
 
 ## Changing anything

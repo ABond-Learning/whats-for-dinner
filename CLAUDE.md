@@ -37,9 +37,13 @@ answer it and stop. Don't install, build, commit or push.
 | Add a recipe, change a quantity, fix a note | `data/recipes.js` |
 | Add an ingredient or change what's in stock | `data/pantry.js` |
 | Change how the app behaves or looks | `src/RecipeBook.jsx` |
+| Change offline/caching behaviour | `tools/sw-template.js` |
 
-Never hand-edit `recipes.md`, `dist/app.js` or `dist/recipe-book.jsx`. They are
-generated. Changes to them will be overwritten by the next build.
+Never hand-edit `recipes.md`, `dist/app.js`, `dist/recipe-book.jsx` or `sw.js`
+(root). They are generated. Changes to them will be overwritten by the next
+build. `sw.js` is stamped from `tools/sw-template.js` with a cache version
+derived from `dist/app.js`'s content hash — editing `sw.js` directly both
+gets overwritten and breaks that version link.
 
 ## Rules the audit enforces
 
