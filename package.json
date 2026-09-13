@@ -7,6 +7,8 @@
     "build": "node tools/audit.mjs && node tools/generate-markdown.mjs && node tools/build-artifact.mjs && node tools/build-web.mjs"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

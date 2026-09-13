@@ -10,8 +10,7 @@ step-at-a-time cook mode.
 data/recipes.js          Recipes. Single source of truth.
 data/pantry.js           Ingredient catalogue + what you have in.
 src/RecipeBook.jsx       The app. Imports the data, contains no recipes.
-src/react-shim.js        Points the bundle at the CDN copy of React.
-src/web-entry.jsx        Mounts the app in the browser.
+src/web-entry.jsx        Mounts the app in the browser. React is bundled.
 tools/audit.mjs          Structural checks. Run before every commit.
 tools/generate-markdown.mjs   Rebuilds recipes.md from the data.
 tools/build-artifact.mjs      Rebuilds the single-file Claude artifact.

@@ -1,34 +1,18 @@
 // Service worker for offline use. GENERATED from this file into ./sw.js by
-// tools/build-web.mjs, which stamps a1b1e49012 with a hash of
+// tools/build-web.mjs, which stamps 1e084fa002 with a hash of
 // dist/app.js so every deploy that changes the app ships a new SW script.
 // Browsers only check a SW for updates by comparing script bytes, so without
 // a version that moves on every real change, a new deployment would never
 // be noticed and old caches would never be cleared.
-const CACHE_VERSION = "a1b1e49012";
+const CACHE_VERSION = "1e084fa002";
 const CACHE_NAME = `wfd-shell-${CACHE_VERSION}`;
 
-// Same-origin shell: fetched with the normal (cors) mode, so a single failed
-// request fails the whole install — these should always be reachable.
+// Everything is same-origin now — React is bundled into dist/app.js rather
+// than loaded from a CDN — so a plain cache.addAll covers the whole shell.
 const SHELL_URLS = ["./", "./index.html", "./manifest.json", "./icon.svg", "./dist/app.js"];
 
-// Cross-origin (React from the CDN): fetched separately with no-cors, since
-// cache.addAll would abort the whole install on a CORS-opaque response.
-const CDN_URLS = [
-  "https://unpkg.com/react@18/umd/react.production.min.js",
-  "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js",
-];
-
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) =>
-      Promise.all([
-        cache.addAll(SHELL_URLS),
-        ...CDN_URLS.map((url) =>
-          fetch(url, { mode: "no-cors" }).then((res) => cache.put(url, res)).catch(() => {})
-        ),
-      ])
-    )
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_URLS)));
   self.skipWaiting();
 });
 
@@ -64,8 +48,8 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Everything else (manifest, icon, the CDN scripts): cache-first, since
-  // these rarely change and a version bump already invalidates them.
+  // Everything else (manifest, icon): cache-first, since these rarely
+  // change and a version bump already invalidates them.
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;

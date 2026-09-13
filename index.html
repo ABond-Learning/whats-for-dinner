@@ -19,18 +19,14 @@
 <body>
 <div id="root"><div id="boot">Loading…</div></div>
 
-<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="./dist/app.js"></script>
 
 <script>
-  // If React or the bundle failed to load, say so rather than sitting on "Loading…".
+  // If the bundle failed to start, say so rather than sitting on "Loading…".
   setTimeout(function () {
     var b = document.getElementById('boot');
     if (!b) return;
-    b.textContent = !window.React
-      ? 'React failed to load. Check the connection, then reload.'
-      : 'The app failed to start. Open the browser console for the error.';
+    b.textContent = 'The app failed to start. Open the browser console for the error.';
   }, 4000);
 
   if ('serviceWorker' in navigator) {

@@ -7,28 +7,12 @@
 const CACHE_VERSION = "__CACHE_VERSION__";
 const CACHE_NAME = `wfd-shell-${CACHE_VERSION}`;
 
-// Same-origin shell: fetched with the normal (cors) mode, so a single failed
-// request fails the whole install — these should always be reachable.
+// Everything is same-origin now — React is bundled into dist/app.js rather
+// than loaded from a CDN — so a plain cache.addAll covers the whole shell.
 const SHELL_URLS = ["./", "./index.html", "./manifest.json", "./icon.svg", "./dist/app.js"];
 
-// Cross-origin (React from the CDN): fetched separately with no-cors, since
-// cache.addAll would abort the whole install on a CORS-opaque response.
-const CDN_URLS = [
-  "https://unpkg.com/react@18/umd/react.production.min.js",
-  "https://unpkg.com/react-dom@18/umd/react-dom.production.min.js",
-];
-
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) =>
-      Promise.all([
-        cache.addAll(SHELL_URLS),
-        ...CDN_URLS.map((url) =>
-          fetch(url, { mode: "no-cors" }).then((res) => cache.put(url, res)).catch(() => {})
-        ),
-      ])
-    )
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_URLS)));
   self.skipWaiting();
 });
 
@@ -64,8 +48,8 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Everything else (manifest, icon, the CDN scripts): cache-first, since
-  // these rarely change and a version bump already invalidates them.
+  // Everything else (manifest, icon): cache-first, since these rarely
+  // change and a version bump already invalidates them.
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;

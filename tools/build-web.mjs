@@ -13,7 +13,6 @@ await build({
   minify: true,
   format: 'iife',
   target: ['es2020'],
-  alias: { react: './src/react-shim.js' },
   outfile: 'dist/app.js',
   logLevel: 'warning',
 });
