@@ -184,8 +184,7 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 30,
     effort: "Medium",
-    confirmed: false,
-    untestedNote: "Written for the two boneless thighs you defrosted, not yet cooked. The braise timing and the gochujang quantity are estimates — taste the sauce at the end before you commit to it.",
+    confirmed: true,
     needsAhead: { label: "Thaw the thighs — about an hour in cold water, or overnight in the fridge", mins: 60 },
     servingsBase: 1,
     ingredients: [

@@ -1,6 +1,6 @@
 # Recipe Book
 
-Generated from the recipe app on 2026-09-11. Don't hand-edit this file — change the app data and regenerate, or the two will drift apart.
+Generated from the recipe app on 2026-09-13. Don't hand-edit this file — change the app data and regenerate, or the two will drift apart.
 
 Every recipe is one portion: one dinner for one person. UK units throughout. ⚠️ marks a step where something burns, catches or overcooks if you get it wrong.
 
@@ -224,8 +224,6 @@ Roast thighs, no glaze, with Golden Curry sauce and greens as the base.
 Boneless thighs, browned then braised in their own sauce. Thirty minutes.
 
 *30 minutes · Medium effort · one portion*
-
-> **Not cooked yet.** Written for the two boneless thighs you defrosted, not yet cooked. The braise timing and the gochujang quantity are estimates — taste the sauce at the end before you commit to it.
 
 ### Ingredients
 

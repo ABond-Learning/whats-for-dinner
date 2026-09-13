@@ -1,10 +1,10 @@
 // Service worker for offline use. GENERATED from this file into ./sw.js by
-// tools/build-web.mjs, which stamps b6b59a365f with a hash of
+// tools/build-web.mjs, which stamps a1b1e49012 with a hash of
 // dist/app.js so every deploy that changes the app ships a new SW script.
 // Browsers only check a SW for updates by comparing script bytes, so without
 // a version that moves on every real change, a new deployment would never
 // be noticed and old caches would never be cleared.
-const CACHE_VERSION = "b6b59a365f";
+const CACHE_VERSION = "a1b1e49012";
 const CACHE_NAME = `wfd-shell-${CACHE_VERSION}`;
 
 // Same-origin shell: fetched with the normal (cors) mode, so a single failed
