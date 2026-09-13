@@ -15,7 +15,6 @@ function recipe(r){
   o+=`*${r.totalMins} minutes · ${r.effort} effort · one portion`;
   if(r.fromFrozen) o+=' · cooks from frozen';
   o+=`*\n\n`;
-  if(!r.confirmed) o+=`> **Not cooked yet.** ${r.untestedNote||"Adapted from the manufacturer's own recipe, not tested in your kitchen."}\n\n`;
   if(r.ingredients.length){
     o+=`### Ingredients\n\n`;
     for(const i of r.ingredients){

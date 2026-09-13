@@ -431,12 +431,6 @@ function Detail({ recipe, onBack, servings, setServings, pantry }) {
           <ul>{recipe.notes.map((n, i) => <li key={i}>{n}</li>)}</ul>
         </div>
       )}
-      {!recipe.confirmed && (
-        <div className="panel">
-          <h5>Not cooked yet</h5>
-          <ul><li>{recipe.untestedNote || "Adapted from the manufacturer's own recipe, not tested in your kitchen. Treat the seasoning as a starting point and taste as you go."}</li></ul>
-        </div>
-      )}
     </>
   );
 }
@@ -533,7 +527,6 @@ function List({ items, filterable, onOpen, method, pantry }) {
               <span className="tag">{r.effort} effort</span>
               {r.fromFrozen && <span className="tag">Cooks from frozen</span>}
               {r.doubleHint && <span className="tag">Worth doubling</span>}
-              {!r.confirmed && <span className="tag" data-x="1">Untested</span>}
             </div>
           </div>
         </button>

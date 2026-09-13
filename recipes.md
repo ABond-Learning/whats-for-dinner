@@ -119,8 +119,6 @@ Same method, Korean chilli paste instead of miso.
 
 *60 minutes · Low effort · one portion · cooks from frozen*
 
-> **Not cooked yet.** Never cooked. Adapted down from the tube's own recipe, which called for 4 tbsp paste and 3 tbsp soy for two — cut here because the label read salty. The quantities are a starting point, not a tested balance.
-
 ### Ingredients
 
 - 2 bone-in, skin-on chicken thighs
@@ -161,6 +159,7 @@ Same method, Korean chilli paste instead of miso.
 - Don't add honey — the paste is already sweet.
 - The tube's own version uses 4 tbsp paste and 3 tbsp soy for two. Cut down here because it read salty on the label.
 - Gochujang keeps three weeks in the fridge once opened. Shorter than most pastes.
+- The paste and soy amounts are an estimate rather than a tested balance — taste the glaze before committing to the full quantity.
 
 ---
 
@@ -169,8 +168,6 @@ Same method, Korean chilli paste instead of miso.
 Roast thighs, no glaze, with Golden Curry sauce and greens as the base.
 
 *60 minutes · Medium effort · one portion · cooks from frozen*
-
-> **Not cooked yet.** You were given this plan and it's built on the roast method you have cooked, but you never confirmed you made it. Treat the sauce quantities as a starting point.
 
 ### Ingredients
 
@@ -216,6 +213,7 @@ Roast thighs, no glaze, with Golden Curry sauce and greens as the base.
 - No chilli — the roux is already medium hot. No cornflour — it thickens itself.
 - Box ratio is 92g to 720ml for 5 servings, so one portion is 18g to about 145ml. 175ml here because there's no rice and you want enough sauce.
 - Don't braise bone-in thighs in the roux. It catches on the bottom and you can't judge doneness in an opaque sauce.
+- The sauce quantities are a starting point rather than a tested balance — taste before deciding it needs more roux or coconut.
 
 ---
 
@@ -427,8 +425,6 @@ Sixteen minutes, one pan. For nights you can't face cooking.
 
 *16 minutes · Low effort · one portion · cooks from frozen*
 
-> **Not cooked yet.** Written out but never cooked — you asked for more sauce and made the coconut broth instead. The method is sound; the seasoning at the end is untested.
-
 ### Ingredients
 
 - 200 g raw king prawns, from frozen
@@ -459,6 +455,7 @@ Sixteen minutes, one pan. For nights you can't face cooking.
 ### Worth knowing
 
 - The only way to get this wrong is the prawns. Three minutes, then off, even if you think they need longer.
+- The seasoning at the end is an estimate — taste after the fish sauce and lemon go in rather than trusting the quantities outright.
 
 ---
 

@@ -43,7 +43,6 @@ anything from broken data.
 - No ingredient listed but never used in the method
 - Step offsets ascend
 - The stated total time matches where the timeline actually ends
-- Anything marked `confirmed: false` gives a reason
 
 ## The pantry
 
@@ -98,8 +97,6 @@ unused-item check precisely so alternatives can exist.
 | Field | Meaning |
 |---|---|
 | `servingsBase` | Always 1. One portion is one dinner for one person. |
-| `confirmed` | `true` only if it has actually been cooked. |
-| `untestedNote` | Required when `confirmed` is false. Say why. |
 | `at` | Minutes from the start of cooking. Negative for prep before. |
 | `warn` | Marks a step where something burns, catches or overcooks. |
 | `fromFrozen` | The method is written for frozen meat and works as-is. |

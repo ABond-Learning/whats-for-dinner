@@ -27,8 +27,6 @@ for (const r of all) {
     if (!ats.every((v, i, a) => i === 0 || a[i - 1] <= v)) issues.push(`${r.id}: step offsets out of order`);
   }
 
-  if (!r.confirmed && !r.untestedNote) issues.push(`${r.id}: marked untested but gives no reason`);
-
   // Every ingredient must map to a pantry catalogue item, or the
   // "can I cook this" answer is silently wrong.
   for (const ing of r.ingredients) {

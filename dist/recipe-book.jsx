@@ -27,7 +27,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 60,
     effort: "Low",
-    confirmed: true,
     fromFrozen: true,
     servingsBase: 1,
     ingredients: [
@@ -63,7 +62,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 60,
     effort: "Low",
-    confirmed: true,
     fromFrozen: true,
     servingsBase: 1,
     ingredients: [
@@ -104,8 +102,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 60,
     effort: "Low",
-    confirmed: false,
-    untestedNote: "Never cooked. Adapted down from the tube's own recipe, which called for 4 tbsp paste and 3 tbsp soy for two — cut here because the label read salty. The quantities are a starting point, not a tested balance.",
     fromFrozen: true,
     servingsBase: 1,
     ingredients: [
@@ -133,6 +129,7 @@ const DINNERS = [
       "Don't add honey — the paste is already sweet.",
       "The tube's own version uses 4 tbsp paste and 3 tbsp soy for two. Cut down here because it read salty on the label.",
       "Gochujang keeps three weeks in the fridge once opened. Shorter than most pastes.",
+      "The paste and soy amounts are an estimate rather than a tested balance — taste the glaze before committing to the full quantity.",
     ],
   },
   {
@@ -142,8 +139,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 60,
     effort: "Medium",
-    confirmed: false,
-    untestedNote: "You were given this plan and it's built on the roast method you have cooked, but you never confirmed you made it. Treat the sauce quantities as a starting point.",
     fromFrozen: true,
     servingsBase: 1,
     ingredients: [
@@ -175,6 +170,7 @@ const DINNERS = [
       "No chilli — the roux is already medium hot. No cornflour — it thickens itself.",
       "Box ratio is 92g to 720ml for 5 servings, so one portion is 18g to about 145ml. 175ml here because there's no rice and you want enough sauce.",
       "Don't braise bone-in thighs in the roux. It catches on the bottom and you can't judge doneness in an opaque sauce.",
+      "The sauce quantities are a starting point rather than a tested balance — taste before deciding it needs more roux or coconut.",
     ],
   },
   {
@@ -184,7 +180,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 30,
     effort: "Medium",
-    confirmed: true,
     needsAhead: { label: "Thaw the thighs — about an hour in cold water, or overnight in the fridge", mins: 60 },
     servingsBase: 1,
     ingredients: [
@@ -225,7 +220,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 30,
     effort: "Low",
-    confirmed: true,
     needsAhead: { label: "Thaw the thighs — about an hour in cold water, or overnight in the fridge", mins: 60 },
     servingsBase: 1,
     ingredients: [
@@ -269,7 +263,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 40,
     effort: "High",
-    confirmed: true,
     needsAhead: { label: "Thaw the thighs — about an hour in cold water, or overnight in the fridge", mins: 60 },
     servingsBase: 1,
     ingredients: [
@@ -311,7 +304,6 @@ const DINNERS = [
     protein: "Chicken",
     totalMins: 70,
     effort: "Medium",
-    confirmed: true,
     doubleHint: true,
     needsAhead: { label: "Thaw the thighs — bone-in, so overnight in the fridge", mins: 480 },
     servingsBase: 1,
@@ -352,8 +344,6 @@ const DINNERS = [
     protein: "Prawns",
     totalMins: 16,
     effort: "Low",
-    confirmed: false,
-    untestedNote: "Written out but never cooked — you asked for more sauce and made the coconut broth instead. The method is sound; the seasoning at the end is untested.",
     fromFrozen: true,
     servingsBase: 1,
     ingredients: [
@@ -375,7 +365,10 @@ const DINNERS = [
       { at: 13, title: "Prawns", warn: true, body: "Shake the sieve hard — wet prawns steam instead of frying. {prawn} in, 2–3 minutes, no more. Done when pink and curled into a C. A tight O is overcooked.", timer: 3 },
       { at: 16, title: "Finish", body: "Off the heat. {fish}, the juice of half a {lem}, black pepper. Swirl the pan, then pour prawns and all the butter over the greens. The butter is the sauce — don't leave it behind." },
     ],
-    notes: ["The only way to get this wrong is the prawns. Three minutes, then off, even if you think they need longer."],
+    notes: [
+      "The only way to get this wrong is the prawns. Three minutes, then off, even if you think they need longer.",
+      "The seasoning at the end is an estimate — taste after the fish sauce and lemon go in rather than trusting the quantities outright.",
+    ],
   },
   {
     id: "coconut-broth",
@@ -384,7 +377,6 @@ const DINNERS = [
     protein: "Prawns",
     totalMins: 26,
     effort: "Low",
-    confirmed: true,
     fromFrozen: true,
     servingsBase: 1,
     ingredients: [
@@ -431,7 +423,6 @@ const COMPONENTS = [
     protein: "Method",
     totalMins: 60,
     effort: "Low",
-    confirmed: true,
     fromFrozen: true,
     servingsBase: 1,
     ingredients: ROAST_BASE,
@@ -456,7 +447,6 @@ const COMPONENTS = [
     protein: "Method",
     totalMins: 6,
     effort: "Low",
-    confirmed: true,
     servingsBase: 1,
     ingredients: [],
     steps: [
@@ -499,8 +489,7 @@ const STORAGE = [
 const HOWTO = [
   ["Cooking tonight", "Open Dinners, tap Can cook now to see what's actually doable, and pick anything marked Ready to cook. Missing N means N core ingredients are short — sides don't count."],
   ["Updating the pantry after shopping", "Open Pantry, tap In or Out next to whatever changed. After a big shop, use \"Just shopped — mark all in\" under Fresh rather than ticking each one."],
-  ["Marking a recipe as tested", "Cook it and eat it first. Only then tell Claude — it flips confirmed to true and removes the untested note. Looking fine on paper isn't enough."],
-  ["Correcting a quantity", "Tell Claude what's wrong and what it should be instead. It edits data/recipes.js and rebuilds the site — you never need to touch the file yourself."],
+  ["Correcting a quantity or timing", "Tell Claude what's wrong and what it should be instead. It edits data/recipes.js and rebuilds the site — you never need to touch the file yourself."],
   ["When the site looks out of date", "Hard refresh the page first — it's usually just the browser holding an old copy. Still stale after that means the last change probably wasn't rebuilt and pushed; ask Claude to check."],
 ];
 
@@ -1087,12 +1076,6 @@ function Detail({ recipe, onBack, servings, setServings, pantry }) {
           <ul>{recipe.notes.map((n, i) => <li key={i}>{n}</li>)}</ul>
         </div>
       )}
-      {!recipe.confirmed && (
-        <div className="panel">
-          <h5>Not cooked yet</h5>
-          <ul><li>{recipe.untestedNote || "Adapted from the manufacturer's own recipe, not tested in your kitchen. Treat the seasoning as a starting point and taste as you go."}</li></ul>
-        </div>
-      )}
     </>
   );
 }
@@ -1189,7 +1172,6 @@ function List({ items, filterable, onOpen, method, pantry }) {
               <span className="tag">{r.effort} effort</span>
               {r.fromFrozen && <span className="tag">Cooks from frozen</span>}
               {r.doubleHint && <span className="tag">Worth doubling</span>}
-              {!r.confirmed && <span className="tag" data-x="1">Untested</span>}
             </div>
           </div>
         </button>

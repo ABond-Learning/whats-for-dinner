@@ -30,6 +30,14 @@ answer it and stop. Don't install, build, commit or push.
 5. Always finish by running `git log --oneline -1` and reporting the
    resulting commit.
 
+## The development plan
+
+`PLAN.md` at the repo root is the development plan: what's being built and
+in what order, structured as Now / Next / Later / Decided against. It must
+be updated in the same commit whenever an item is finished (delete it —
+git log is the record of what shipped, not a checkbox) or a new one is
+agreed. A plan that lags behind the repo gets believed instead of the repo.
+
 ## What to edit
 
 | Change | File |
@@ -50,7 +58,6 @@ gets overwritten and breaks that version link.
 - Every `{token}` in a method resolves to an ingredient in that recipe
 - Every ingredient name appears in `INGREDIENT_MAP` in `data/pantry.js`
 - A recipe's stated `totalMins` matches where its timeline actually ends
-- Anything with `confirmed: false` has an `untestedNote` explaining why
 - A recipe cannot be both `fromFrozen` and `needsAhead`
 - Every side in `SIDES` has a `prep` note
 
@@ -58,9 +65,6 @@ gets overwritten and breaks that version link.
 
 **One portion means one dinner for one person.** Never write a recipe at two
 portions because it seems more natural.
-
-**`confirmed: true` means it has actually been cooked.** Do not flip this
-because a recipe looks fine. Only Aiden can confirm it, by having eaten it.
 
 **Frozen or thawed is part of the recipe.** A method written for frozen meat and
 one written for thawed meat are different recipes with different timings, not
@@ -71,8 +75,10 @@ one recipe with a fallback paragraph in the notes. Use `fromFrozen` or
 on the core ingredients only.
 
 **Don't hedge quantities you're guessing at — mark them.** If a timing or an
-amount is an estimate rather than something that's been cooked, say so in
-`untestedNote` rather than presenting it with the same confidence as a tested one.
+amount is an estimate rather than something that's been cooked, say so as a
+plain sentence in that recipe's `notes` array rather than presenting it with
+the same confidence as a tested one. There's no separate tested/untested
+flag — if something doesn't work, say so and it gets fixed.
 
 ## Kitchen constraints every recipe is written around
 
