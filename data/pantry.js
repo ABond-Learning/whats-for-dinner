@@ -22,9 +22,13 @@ export const PANTRY = [
   { id: "pepper", name: "Black pepper", cat: "Always", defaultState: "always" },
 
   // --- freezer ----------------------------------------------------------
-  { id: "thighs-bone", name: "Chicken thighs, bone-in", cat: "Freezer", defaultState: "have", keeps: "Months frozen. Needs a day in the fridge before any recipe that browns the skin." },
-  { id: "thighs-boneless", name: "Chicken thighs, boneless", cat: "Freezer", defaultState: "have", keeps: "Months frozen." },
-  { id: "prawns", name: "Raw king prawns", cat: "Freezer", defaultState: "have", keeps: "Months frozen. Cook straight from frozen after a 5-minute rinse." },
+  // thawState is a second axis, independent of defaultState/"have"/"out":
+  // whether the meat itself is frozen or has been thawed. It only exists on
+  // items where that distinction changes what's cookable. Defaults to
+  // frozen — that's how it comes out of the freezer.
+  { id: "thighs-bone", name: "Chicken thighs, bone-in", cat: "Freezer", defaultState: "have", thawState: "frozen", keeps: "Months frozen. Needs a day in the fridge before any recipe that browns the skin." },
+  { id: "thighs-boneless", name: "Chicken thighs, boneless", cat: "Freezer", defaultState: "have", thawState: "frozen", keeps: "Months frozen." },
+  { id: "prawns", name: "Raw king prawns", cat: "Freezer", defaultState: "have", thawState: "frozen", keeps: "Months frozen. Cook straight from frozen after a 5-minute rinse." },
   { id: "fz-garlic", name: "Frozen chopped garlic", cat: "Freezer", defaultState: "have", keeps: "Months." },
   { id: "fz-ginger", name: "Frozen chopped ginger", cat: "Freezer", defaultState: "have", keeps: "Months." },
   { id: "fz-chilli", name: "Frozen chopped chilli", cat: "Freezer", defaultState: "have", keeps: "Months." },
@@ -144,6 +148,18 @@ export function stateOf(id, state) {
   if (state && state[id]) return state[id];
   const item = pantryItem(id);
   return item ? item.defaultState : "have";
+}
+
+// Whether a catalogue item tracks frozen/thawed at all — only the meat that
+// cooks differently in each state does.
+export const tracksThaw = (id) => !!pantryItem(id)?.thawState;
+
+// meatState: { [id]: "frozen" | "thawed" }. Anything absent falls back to
+// the catalogue default (frozen). Returns null for items that don't track it.
+export function thawStateOf(id, meatState) {
+  if (meatState && meatState[id]) return meatState[id];
+  const item = pantryItem(id);
+  return item?.thawState ?? null;
 }
 
 export function checkRecipe(recipe, state) {

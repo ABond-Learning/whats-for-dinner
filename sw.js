@@ -1,10 +1,10 @@
 // Service worker for offline use. GENERATED from this file into ./sw.js by
-// tools/build-web.mjs, which stamps 99aa1e5017 with a hash of
+// tools/build-web.mjs, which stamps 2d25dadabe with a hash of
 // dist/app.js so every deploy that changes the app ships a new SW script.
 // Browsers only check a SW for updates by comparing script bytes, so without
 // a version that moves on every real change, a new deployment would never
 // be noticed and old caches would never be cleared.
-const CACHE_VERSION = "99aa1e5017";
+const CACHE_VERSION = "2d25dadabe";
 const CACHE_NAME = `wfd-shell-${CACHE_VERSION}`;
 
 // Everything is same-origin now — React is bundled into dist/app.js rather

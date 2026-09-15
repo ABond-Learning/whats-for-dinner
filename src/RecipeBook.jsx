@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { DINNERS, COMPONENTS, KITCHEN, STORAGE, WONT_WORK, HOWTO } from "../data/recipes.js";
-import { PANTRY, pantryItem, checkRecipe, stateOf, OPTIONAL, SIDES, INGREDIENT_MAP } from "../data/pantry.js";
+import { PANTRY, pantryItem, checkRecipe, stateOf, OPTIONAL, SIDES, INGREDIENT_MAP, tracksThaw, thawStateOf } from "../data/pantry.js";
 
 
 /* ------------------------------------------------------------------ */
@@ -210,6 +210,8 @@ const CSS = `
   font-weight:500; padding:7px 12px; cursor:pointer; color:var(--mute); }
 .toggle button[data-on="1"] { background:var(--flame); color:#fff; }
 .toggle button[data-on="1"][data-neg="1"] { background:var(--ember); }
+.prow[data-sub="1"] { padding-top:0; }
+.prow[data-sub="1"] .pn { color:var(--mute); font-size:13px; }
 .cat { font-size:13px; font-weight:600; color:var(--mute); margin:22px 0 2px; }
 .cat:first-of-type { margin-top:4px; }
 
@@ -447,9 +449,10 @@ function statusOf(recipe, pantry) {
   return { s, label: `Missing ${missing.length}` };
 }
 
-function PantryPage({ pantry, setPantry }) {
+function PantryPage({ pantry, setPantry, meatState, setMeatState }) {
   const cats = [...new Set(PANTRY.filter((p) => p.defaultState !== "always").map((p) => p.cat))];
   const set = (id, v) => setPantry({ ...pantry, [id]: v });
+  const setThaw = (id, v) => setMeatState({ ...meatState, [id]: v });
   const allIn = (cat) => {
     const next = { ...pantry };
     PANTRY.filter((p) => p.cat === cat).forEach((p) => { next[p.id] = "have"; });
@@ -474,19 +477,31 @@ function PantryPage({ pantry, setPantry }) {
           </div>
           {PANTRY.filter((p) => p.cat === cat).map((p) => {
             const st = stateOf(p.id, pantry);
+            const thaw = tracksThaw(p.id) ? thawStateOf(p.id, meatState) : null;
             return (
-              <div className="prow" key={p.id}>
-                <span className="pn">
-                  {p.name}
-                  {OPTIONAL.has(p.id) && " (optional in recipes)"}
-                  {p.keeps && <span className="pk">{p.keeps}</span>}
-                  {p.prep && <span className="pk" style={{ marginTop: 4 }}><b>Cooking it.</b> {p.prep}</span>}
-                </span>
-                <span className="toggle">
-                  <button data-on={st === "have" ? 1 : 0} onClick={() => set(p.id, "have")}>In</button>
-                  <button data-on={st === "out" ? 1 : 0} data-neg="1" onClick={() => set(p.id, "out")}>Out</button>
-                </span>
-              </div>
+              <React.Fragment key={p.id}>
+                <div className="prow">
+                  <span className="pn">
+                    {p.name}
+                    {OPTIONAL.has(p.id) && " (optional in recipes)"}
+                    {p.keeps && <span className="pk">{p.keeps}</span>}
+                    {p.prep && <span className="pk" style={{ marginTop: 4 }}><b>Cooking it.</b> {p.prep}</span>}
+                  </span>
+                  <span className="toggle">
+                    <button data-on={st === "have" ? 1 : 0} onClick={() => set(p.id, "have")}>In</button>
+                    <button data-on={st === "out" ? 1 : 0} data-neg="1" onClick={() => set(p.id, "out")}>Out</button>
+                  </span>
+                </div>
+                {thaw && (
+                  <div className="prow" data-sub="1">
+                    <span className="pn">Frozen or thawed</span>
+                    <span className="toggle">
+                      <button data-on={thaw === "frozen" ? 1 : 0} onClick={() => setThaw(p.id, "frozen")}>Frozen</button>
+                      <button data-on={thaw === "thawed" ? 1 : 0} onClick={() => setThaw(p.id, "thawed")}>Thawed</button>
+                    </span>
+                  </div>
+                )}
+              </React.Fragment>
             );
           })}
         </div>
@@ -540,6 +555,7 @@ export default function RecipeBook() {
   const [open, setOpen] = useState(null);
   const [servingsMap, setServingsMap] = useState({});
   const [pantry, setPantryState] = useState({});
+  const [meatState, setMeatStateRaw] = useState({});
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -548,6 +564,8 @@ export default function RecipeBook() {
       if (raw) { try { setServingsMap(JSON.parse(raw)); } catch { /* corrupt, ignore */ } }
       const praw = await store.get("pantry-state");
       if (praw) { try { setPantryState(JSON.parse(praw)); } catch { /* corrupt, ignore */ } }
+      const mraw = await store.get("meat-state");
+      if (mraw) { try { setMeatStateRaw(JSON.parse(mraw)); } catch { /* corrupt, ignore */ } }
       setLoaded(true);
     })();
   }, []);
@@ -561,6 +579,11 @@ export default function RecipeBook() {
   const setPantry = (next) => {
     setPantryState(next);
     store.set("pantry-state", JSON.stringify(next));
+  };
+
+  const setMeatState = (next) => {
+    setMeatStateRaw(next);
+    store.set("meat-state", JSON.stringify(next));
   };
 
   const all = [...DINNERS, ...COMPONENTS];
@@ -596,7 +619,9 @@ export default function RecipeBook() {
               </>
             )}
 
-            {section === "pantry" && <PantryPage pantry={pantry} setPantry={setPantry} />}
+            {section === "pantry" && (
+              <PantryPage pantry={pantry} setPantry={setPantry} meatState={meatState} setMeatState={setMeatState} />
+            )}
 
             {section === "kitchen" && (
               <>

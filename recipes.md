@@ -1,6 +1,6 @@
 # Recipe Book
 
-Generated from the recipe app on 2026-09-13. Don't hand-edit this file — change the app data and regenerate, or the two will drift apart.
+Generated from the recipe app on 2026-09-15. Don't hand-edit this file — change the app data and regenerate, or the two will drift apart.
 
 Every recipe is one portion: one dinner for one person. UK units throughout. ⚠️ marks a step where something burns, catches or overcooks if you get it wrong.
 
