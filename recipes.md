@@ -419,6 +419,48 @@ Worth doubling — it reheats better than anything else here.
 
 ---
 
+## Chicken in parmesan and anchovy cream
+
+Boneless thighs braised in a rich, salty cream sauce. Thirty minutes, one pan.
+
+*30 minutes · Medium effort · one portion*
+
+### Ingredients
+
+- 2 boneless, skinless chicken thighs
+- 1 tbsp olive oil
+- 100 g frozen diced onions
+- 2 tsp frozen chopped garlic
+- 2 anchovy fillets
+- 150 ml double cream
+- 50 ml water
+- 30 g parmesan, finely grated
+- 1 tsp rice vinegar
+- 150 g tenderstem broccoli
+- 2 pak choi
+
+### Method
+
+**0:00** — **Brown the thighs.** Pat **2 boneless, skinless chicken thighs** dry. **1 tbsp olive oil** in the pan, medium-high. 4 minutes undisturbed until browned, then turn for 2 minutes. Out onto a plate — they won't be cooked through yet, and shouldn't be.
+
+**0:06** — **Onions.** **100 g frozen diced onions** into the same pan, 5 minutes until soft and the water's gone.
+
+**0:11** — **Garlic and anchovies.** **2 tsp frozen chopped garlic**, 30 seconds. **2 anchovy fillets** in, mashed against the pan with a wooden spoon for a minute until they disappear completely. They have to melt into the fat before any liquid goes in, or they stay as recognisable fish. ⚠️
+
+**0:13** — **Cream and water.** **150 ml double cream** and **50 ml water** in. Simmer gently — don't let it boil hard.
+
+**0:14** — **Braise.** Thighs back in with any juices from the plate. Lid on, low, 12 minutes. **150 g tenderstem broccoli** and **2 pak choi** in alongside for the last 6.
+
+**0:26** — **Check.** Thighs out. 75°C at the thickest part, then the pan off the heat.
+
+**0:27** — **Parmesan.** **30 g parmesan, finely grated** in off the heat, stirred until melted. Never boil after the cheese goes in — it splits into grainy threads and oily liquid, and won't come back together. ⚠️
+
+**0:29** — **Season.** **1 tsp rice vinegar** and plenty of black pepper. Taste — no salt needed, the anchovies and parmesan have already done it.
+
+**0:30** — **Plate.** Slice the thighs thickly and put them back into the sauce.
+
+---
+
 ## Garlic butter prawns
 
 Sixteen minutes, one pan. For nights you can't face cooking.

@@ -47,6 +47,7 @@ export const PANTRY = [
   { id: "chorizo", name: "Cooking chorizo", cat: "Fresh", defaultState: "out", keeps: "Weeks unopened in the fridge. About a week once cut." },
   { id: "butter", name: "Butter", cat: "Fresh", defaultState: "have", keeps: "Weeks in the fridge." },
   { id: "eggs", name: "Eggs", cat: "Fresh", defaultState: "have", keeps: "Weeks." },
+  { id: "cream", name: "Double cream", cat: "Fresh", defaultState: "out", keeps: "About a week in the fridge once opened." },
 
   // --- cupboard ---------------------------------------------------------
   { id: "soy", name: "Soy sauce", cat: "Cupboard", defaultState: "have", keeps: "Years." },
@@ -69,6 +70,8 @@ export const PANTRY = [
   { id: "gochujang", name: "Gochujang paste", cat: "Fridge", defaultState: "have", keeps: "Three weeks once opened. The shortest clock in the cupboard." },
   { id: "currypaste", name: "Thai red curry paste", cat: "Fridge", defaultState: "have", keeps: "About six weeks once opened." },
   { id: "tomatopuree", name: "Tomato purée", cat: "Fridge", defaultState: "have", keeps: "Weeks in the fridge once opened. Tube, not tin — no waste." },
+  { id: "parmesan", name: "Parmesan", cat: "Fridge", defaultState: "out", keeps: "Weeks in the fridge, wrapped." },
+  { id: "anchovies", name: "Anchovies", cat: "Fridge", defaultState: "have", keeps: "About two weeks once opened, kept under their oil." },
 ];
 
 // Maps every ingredient name used in data/recipes.js to a catalogue id.
@@ -113,6 +116,9 @@ export const INGREDIENT_MAP = {
   "Thai red curry paste": "currypaste",
   "tomato purée": "tomatopuree",
   "flaky salt": "salt",
+  "double cream": "cream",
+  "parmesan, finely grated": "parmesan",
+  "anchovy fillets": "anchovies",
   "water": "water",
   "water, for the greens": "water",
   "water, for the sauce": "water",
